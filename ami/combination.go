@@ -34,7 +34,9 @@ func NewCombination(i, j Nuc, k K) Combination {
 }
 
 // GenerateCombinations generates every permutation of k, I, and J values
-// Outputting these permuations on a dedicated channel
+// TODO: The length of the sequence Combinations are being generated for
+// should also be passed so that only Combinations that are short enough
+// to be possible are generated.
 func GenerateCombinations(minK, maxK K, nucs []Nuc) []Combination {
 	combs := make([]Combination, int(maxK-minK)*len(nucs)*len(nucs))
 
