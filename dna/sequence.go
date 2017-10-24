@@ -5,6 +5,11 @@ import "strings"
 // Sequence is simply a string of nucleotides
 type Sequence []Nuc
 
+// AppendSeq concatenates two Sequences together and returns the result
+func (seq Sequence) AppendSeq(other Sequence) Sequence {
+	return append(seq, other...)
+}
+
 // Validate checks whether the given Sequence is a valid DNA string
 func (seq *Sequence) Validate() bool {
 	if !seq.validateLength() {
