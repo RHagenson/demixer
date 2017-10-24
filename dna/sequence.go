@@ -1,4 +1,4 @@
-package ami
+package dna
 
 import "strings"
 
@@ -21,7 +21,7 @@ func (seq *Sequence) Validate() bool {
 func (seq *Sequence) validateLength() bool {
 	count := 0
 
-	for _, v := range A {
+	for _, v := range ValidNucs {
 		for _, pos := range *seq {
 			if v == pos {
 				count++
@@ -34,10 +34,11 @@ func (seq *Sequence) validateLength() bool {
 
 // validateCapitalization checks that the Seq is made up of only capitals
 func (seq *Sequence) validateCapitalization() bool {
-	return strings.ToUpper((*seq).toString()) == (*seq).toString()
+	return strings.ToUpper((*seq).ToString()) == (*seq).ToString()
 }
 
-func (seq *Sequence) toString() string {
+// ToString returns the string representation of the DNA Sequence
+func (seq *Sequence) ToString() string {
 	bytes := make([]byte, len(*seq))
 	for i, v := range *seq {
 		bytes[i] = byte(v)

@@ -1,10 +1,12 @@
 package ami
 
+import "bitbucket.org/rhagenson/demixer/dna"
+
 // NkValue is a wrapper around an underlying usigned integer
 type NkValue uint16
 
 // Nk generates a map from Combination to number of occurences in the Sequence
-func Nk(seq Sequence, combs []Combination) map[Combination]NkValue {
+func Nk(seq dna.Sequence, combs []Combination) map[Combination]NkValue {
 	nks := make(map[Combination]NkValue)
 
 	for _, comb := range combs {

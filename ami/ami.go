@@ -1,5 +1,7 @@
 package ami
 
+import "bitbucket.org/rhagenson/demixer/dna"
+
 // Entry is made up of a K and IkValue pair
 type Entry struct {
 	k  K
@@ -13,8 +15,8 @@ type Profile struct {
 
 // NewProfile generates the AMIProfile of a given sequence in as concurrent a fashion
 // as possible
-func NewProfile(seq *Sequence) Profile {
-	combs := GenerateCombinations(minK, maxK, A)
+func NewProfile(seq *dna.Sequence) Profile {
+	combs := GenerateCombinations(minK, maxK, dna.ValidNucs)
 	nks := Nk(*seq, combs)
 
 	// Spin up Pk calculations
