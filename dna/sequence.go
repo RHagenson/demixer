@@ -50,3 +50,14 @@ func (seq *Sequence) ToString() string {
 	}
 	return string(bytes)
 }
+
+// Bytes outputs the []byte equivalent of the Sequence
+func (seq *Sequence) Bytes() []byte {
+	bytes := make([]byte, len(*seq))
+
+	for i, v := range *seq {
+		bytes[i] = byte(v)
+	}
+
+	return bytes
+}
