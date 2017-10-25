@@ -8,6 +8,9 @@ import (
 )
 
 // Eh computes the exhaustive history of a Sequence
+// TODO: Since the History is almost completely worthless with
+// hashes stored instead of Sequences or []Nuc values it is pretty worthless to
+// return here
 func Eh(seq dna.Sequence) *History {
 	eh := NewHistory()
 	temp := make(dna.Sequence, 0)
