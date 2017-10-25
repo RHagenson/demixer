@@ -1,21 +1,30 @@
 package lzdistance
 
-import "bitbucket.org/rhagenson/demixer/dna"
+import (
+	"crypto/md5"
+	"encoding/hex"
+
+	"bitbucket.org/rhagenson/demixer/dna"
+)
 
 // Eh computes the exhaustive history of a Sequence
-func Eh(seq dna.Sequence) History {
-	eh := *new(History)
-
-	temp := make([]dna.Nuc, 0)
-
+func Eh(seq dna.Sequence) *History {
+	eh := NewHistory()
+	temp := make(dna.Sequence, 0)
 	for _, v := range seq {
-		if !eh.Contains(append(temp, v)) {
-			eh.Add(v)
-			temp = make([]dna.Nuc, 0)
-		} else {
-			temp = append(temp, v)
+		temp = temp.AppendSeq(dna.Sequence{v})
+		hasher := md5.New()
+		hasher.Write(temp.Bytes())
+		hashsum := hex.EncodeToString(hasher.Sum(nil))
+		// Entry not in History already then add it
+		if found := eh.Contains(hashsum); !found {
+			// Failed to add entry to History should panic
+			if added := eh.Add(hashsum); !added {
+				panic("Failed to add entry to exhaustive history.")
+			}
+			// Clear temp collection
+			temp = make(dna.Sequence, 0)
 		}
 	}
-
-	return eh
+	return &eh
 }
