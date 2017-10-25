@@ -8,7 +8,7 @@ import (
 
 // NormRawDistance is method two of computing LZ-based distance between
 // two sequences. d*(S,Q) = d(S,Q) / MAX{c(S), c(Q)}
-func NormRawDistance(s, q *dna.Sequence) Distance {
+func NormRawDistance(s, q dna.Sequence) Distance {
 	cs, cq, csq, cqs := LZFactors(s, q)
 	return NormRawDistanceFromFactors(cs, cq, csq, cqs)
 }
