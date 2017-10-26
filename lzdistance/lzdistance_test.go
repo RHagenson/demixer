@@ -9,16 +9,6 @@ import (
 	"bitbucket.org/rhagenson/demixer/dna"
 )
 
-// randSeq is a test utility to produce random Sequences based on ValidNucs
-func randSeq(length int) dna.Sequence {
-	seq := make([]dna.Nuc, length)
-
-	for i := 0; i < length; i++ {
-		seq[i] = dna.ValidNucs[rand.Intn(len(dna.ValidNucs))]
-	}
-	return dna.Sequence(seq)
-}
-
 // TestAverageLZDistanceSymmetry check whether d(S,Q) == d(Q,S)
 func TestAverageLZDistanceSymmetry(t *testing.T) {
 	// Generate two sequences at random in parallel
