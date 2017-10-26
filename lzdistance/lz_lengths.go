@@ -35,7 +35,7 @@ func LZ76Length(s dna.Sequence) int {
 	c, l, i, k, maxk := 1, 1, 0, 1, 1
 	n := len(s) - 1
 
-	for true {
+	for {
 		if s[i+k-1] != s[l+k-1] {
 			if k > maxk {
 				maxk = k
