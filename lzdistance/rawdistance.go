@@ -9,7 +9,7 @@ import (
 // RawDistance is method one of computing the LZ-based distance between
 // two Sequences. d(S,Q) = MAX{c(S,Q)-c(S), c(Q,S)-c(Q)}
 func RawDistance(s, q dna.Sequence) Distance {
-	cs, cq, csq, cqs := LZFactors(s, q)
+	cs, cq, csq, cqs := LZ76Factors(s, q)
 	return RawDistanceFromFactors(cs, cq, csq, cqs)
 }
 
