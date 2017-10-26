@@ -7,11 +7,8 @@ import (
 	"bitbucket.org/rhagenson/demixer/dna"
 )
 
-// Eh computes the exhaustive history of a Sequence
-// TODO: Since the History is almost completely worthless with
-// hashes stored instead of Sequences or []Nuc values it is pretty worthless to
-// return here
-func Eh(seq dna.Sequence) *History {
+// LZ78Length implements an LZ78 search and returns complexity length
+func LZ78Length(seq dna.Sequence) int {
 	eh := NewHistory()
 	temp := make(dna.Sequence, 0)
 	for _, v := range seq {
@@ -29,5 +26,41 @@ func Eh(seq dna.Sequence) *History {
 			temp = make(dna.Sequence, 0)
 		}
 	}
-	return &eh
+
+	return eh.Length()
+}
+
+// LZ76Length implements an LZ76 search and returns complexity length
+func LZ76Length(s dna.Sequence) int {
+	c, l, i, k, maxk := 1, 1, 0, 1, 1
+	n := len(s) - 1
+
+	for true {
+		if s[i+k-1] != s[l+k-1] {
+			if k > maxk {
+				maxk = k
+			}
+			i++
+			if i == l {
+				c++
+				l += maxk
+				if (l + 1) > n {
+					break
+				} else {
+					i = 0
+					k = 1
+					maxk = 1
+				}
+			} else {
+				k = 1
+			}
+		} else {
+			k++
+			if (l + k) > n {
+				c++
+				break
+			}
+		}
+	}
+	return c
 }
