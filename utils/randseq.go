@@ -1,4 +1,4 @@
-package lzdistance
+package utils
 
 import (
 	"math/rand"
@@ -6,8 +6,8 @@ import (
 	"bitbucket.org/rhagenson/demixer/dna"
 )
 
-// randSeq is a test utility to produce random Sequences based on ValidNucs
-func randSeq(length int) dna.Sequence {
+// RandSeq is a test utility to produce random Sequences based on ValidNucs
+func RandSeq(length int) dna.Sequence {
 	seq := make([]dna.Nuc, length)
 
 	for i := 0; i < length; i++ {
