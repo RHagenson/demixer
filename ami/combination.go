@@ -52,3 +52,16 @@ func GenerateCombinations(minK, maxK K, nucs []dna.Nuc) []Combination {
 
 	return combs
 }
+
+// PruneCombinations removes any combinations that are not possible
+// in the Sequence. Primarily removing any Combinations with too large
+// a K value
+func PruneCombinations(seq dna.Sequence, combs []Combination) []Combination {
+	for idx, val := range combs {
+		// Too long of K
+		if int(val.K()) > len(seq) {
+			combs = append(combs[:idx], combs[idx+1:]...)
+		}
+	}
+	return combs
+}
