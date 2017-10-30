@@ -1,6 +1,7 @@
 package lzdistance
 
 import (
+	"bytes"
 	"math"
 
 	"bitbucket.org/rhagenson/demixer/dna"
@@ -9,6 +10,10 @@ import (
 // NormRawDistance is method two of computing LZ-based distance between
 // two sequences. d*(S,Q) = d(S,Q) / MAX{c(S), c(Q)}
 func NormRawDistance(s, q dna.Sequence) Distance {
+	if bytes.Equal(s.Bytes(), q.Bytes()) {
+		return Distance(0)
+	}
+
 	cs, cq, csq, cqs := LZ76Factors(s, q)
 	return NormRawDistanceFromFactors(cs, cq, csq, cqs)
 }

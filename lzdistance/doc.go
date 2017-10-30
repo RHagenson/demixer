@@ -13,5 +13,12 @@ In Otu, et al. 2003 there are four distance calculations discussed:
   3. The sum distance equal to the sum of LZ grammar size when
      adding S to Q and adding Q to S. ds(S,Q) where S and Q are Sequences
   4. The normalized sum distance ds*(S,Q) = ds(S,Q) / (1/2[c(SQ)+c(QS)])
+
+Formulatic considerations:
+  +  Otu, et al. 2003 in its Appedices states the error terms for
+     each measure statifying the equality property such that
+     D(S,Q) == 0 when S == Q. Since this is persisent across measures I have
+     treated it as a corner case to check for equality since it should
+     be a distance of zero in that case.
 */
 package lzdistance
