@@ -26,17 +26,15 @@ func TestCombinationCanIncludeSameNuc(t *testing.T) {
 
 // Ensure Combinations include full K range
 func TestCombinationsHaveFullRange(t *testing.T) {
-	minK := K(5)
-	maxK := K(10)
-	combs := GenerateCombinations(minK, maxK, dna.ValidNucs)
+	combs := GenerateCombinations(localMinK, localMaxK, dna.ValidNucs)
 	lowerMet := false
 	upperMet := false
 
 	for _, val := range combs {
 		switch val.K() {
-		case K(minK):
+		case K(localMinK):
 			lowerMet = true
-		case K(maxK):
+		case K(localMaxK):
 			upperMet = true
 		default:
 			continue
@@ -44,8 +42,8 @@ func TestCombinationsHaveFullRange(t *testing.T) {
 	}
 
 	if !(lowerMet && upperMet) {
-		t.Errorf("K values in GenerateCombinations() are not being treated " +
-              "inclusively. It is %t that the lower end is inclusive and " +
-              "%t that the upper end is inclusive.", lowerMet, upperMet)
+		t.Errorf("K values in GenerateCombinations() are not being treated "+
+			"inclusively. It is %t that the lower end is inclusive and "+
+			"%t that the upper end is inclusive.", lowerMet, upperMet)
 	}
 }

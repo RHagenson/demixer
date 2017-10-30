@@ -10,9 +10,6 @@ import (
 	"bitbucket.org/rhagenson/demixer/utils"
 )
 
-const localMinK K = 5
-const localMaxK K = 10
-
 func TestNkValueCanBeUint16(t *testing.T) {
 	nk := *new(NkValue)
 	_ = (uint16)(nk)

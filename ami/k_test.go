@@ -4,9 +4,20 @@ import (
 	"testing"
 )
 
+const localMinK K = 5
+const localMaxK K = 10
+
+func TestKCanTakeOnLocalMin(t *testing.T) {
+	_ = K(localMinK)
+}
+
+func TestKCanTakeOnLocalMax(t *testing.T) {
+	_ = K(localMaxK)
+}
+
 func TestKCanBeUint16(t *testing.T) {
 	k := *new(K)
-  _ = (uint16)(k)
+	_ = (uint16)(k)
 }
 
 func TestKMinFollowsBauerEtAl2008(t *testing.T) {
