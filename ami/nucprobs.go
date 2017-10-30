@@ -11,7 +11,7 @@ func NucProbs(seq *dna.Sequence) map[dna.Nuc]Probability {
 	prnucs := make(map[dna.Nuc]Probability)
 
 	for _, v := range dna.ValidNucs {
-		prnucs[v] = Probability(strings.Count((*seq).ToString(), string(v)) / len(*seq))
+		prnucs[v] = Probability(float64(strings.Count((*seq).ToString(), string(v))) / float64(len(*seq)))
 	}
 
 	return prnucs
