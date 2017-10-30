@@ -1,6 +1,10 @@
 package ami
 
-import "bitbucket.org/rhagenson/demixer/dna"
+import (
+	"math"
+
+	"bitbucket.org/rhagenson/demixer/dna"
+)
 
 // Entry is made up of a K and IkValue pair
 type Entry struct {
@@ -13,8 +17,8 @@ type Profile struct {
 	entries []Entry
 }
 
-// NewProfile generates the AMIProfile of a given sequence in as concurrent a fashion
-// as possible
+// NewProfile generates the AMIProfile of a given sequence in as concurrent
+// a fashion as possible
 func NewProfile(seq *dna.Sequence) Profile {
 	combs := GenerateCombinations(minK, maxK, dna.ValidNucs)
 	nks := Nk(*seq, combs)
@@ -26,12 +30,22 @@ func NewProfile(seq *dna.Sequence) Profile {
 	prnucs := NucProbs(seq)
 	iks := Ik(pks, prnucs)
 
-	// TODO Make AMI profile by ordering the iks map in increasing K values
-	entries := make([]Entry, int(maxK-minK))
+	entries := make([]Entry, 0)
 
-	for index := range entries {
-		entries[index].k = K(index)
-		entries[index].ik = iks[K(index)]
+	for k := minK; k < K(len(*seq)); k++ {
+		if val, ok := iks[K(k)]; ok {
+			if math.IsNaN(float64(val)) {
+				entries = append(entries, Entry{
+					k:  K(k),
+					ik: IkValue(0),
+				})
+			} else {
+				entries = append(entries, Entry{
+					k:  K(k),
+					ik: val,
+				})
+			}
+		}
 	}
 
 	ami := Profile{entries}

@@ -30,7 +30,7 @@ func TestPkReturnsAllCombinations(t *testing.T) {
 
 	for _, combo := range combs {
 		if _, ok := pks[combo]; !ok {
-			t.Errorf("Tried finding %t in Pk() output and failed.", combo)
+			t.Errorf("Tried finding %v in Pk() output and failed.", combo)
 		}
 	}
 }
