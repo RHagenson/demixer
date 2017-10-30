@@ -14,8 +14,12 @@ func Nk(seq dna.Sequence, combs []Combination) map[Combination]NkValue {
 
 		for i, v := range seq {
 			if v == comb.Nuc1() {
-				if seq[K(i)+comb.K()] == comb.Nuc2() {
-					nkval = nkval + 1
+				if len(seq) > i+int(comb.K()) {
+					if seq[i+int(comb.K())] == comb.Nuc2() {
+						nkval = nkval + 1
+					}
+				} else {
+					break
 				}
 			}
 		}
@@ -32,6 +36,9 @@ func SumNk(nks map[Combination]NkValue) map[K]NkValue {
 	for key, val := range nks {
 		sumNk[key.K()] = sumNk[key.K()] + val
 	}
+
+	// Remove the initial zero value from make() above
+	delete(sumNk, K(0))
 
 	return sumNk
 }
