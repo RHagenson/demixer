@@ -10,7 +10,7 @@ var LZ78Tests = []struct {
 	in       dna.Sequence // input
 	expected int          // expected result
 }{
-	{dna.Sequence([]dna.Nuc("AAAA")), 3},         // [A, AA]
+	{dna.Sequence([]dna.Nuc("AAAA")), 2},         // [A, AA]
 	{dna.Sequence([]dna.Nuc("AAAT")), 3},         // [A, AA, T]
 	{dna.Sequence([]dna.Nuc("AATT")), 3},         // [A, AT, T]
 	{dna.Sequence([]dna.Nuc("ATAG")), 3},         // [A, T, AG]
@@ -26,7 +26,7 @@ var LZ76Tests = []struct {
 }{
 	{dna.Sequence([]dna.Nuc("AAAA")), 2},         // [A, AA]
 	{dna.Sequence([]dna.Nuc("AAAT")), 2},         // [A, AA, T]
-	{dna.Sequence([]dna.Nuc("AATT")), 2},         // [A, AT, T]
+	{dna.Sequence([]dna.Nuc("AATT")), 3},         // [A, AT, T]
 	{dna.Sequence([]dna.Nuc("ATAG")), 3},         // [A, T, AG]
 	{dna.Sequence([]dna.Nuc("ATGC")), 4},         // [A, T, G, C]
 	{dna.Sequence([]dna.Nuc("AACGTACCATTG")), 7}, // [A, AC, G, T, ACC, AT, TG]

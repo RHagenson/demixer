@@ -33,7 +33,7 @@ func LZ78Length(seq dna.Sequence) int {
 // LZ76Length implements an LZ76 search and returns complexity length
 func LZ76Length(s dna.Sequence) int {
 	c, l, i, k, maxk := 1, 1, 0, 1, 1
-	n := len(s) - 1
+	n := len(s)
 
 	for {
 		if s[i+k-1] != s[l+k-1] {
