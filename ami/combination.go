@@ -42,7 +42,7 @@ func NewCombination(i, j dna.Nuc, k K) Combination {
 func GenerateCombinations(minK, maxK K, nucs []dna.Nuc) []Combination {
 	combs := make([]Combination, int(maxK-minK)*len(nucs)*len(nucs))
 
-	for k := minK; k < maxK; k++ {
+	for k := minK; k <= maxK; k++ {
 		for idx1, i := range nucs {
 			for idx2, j := range nucs {
 				combs[int(k-minK)+idx1+idx2] = NewCombination(i, j, k)
