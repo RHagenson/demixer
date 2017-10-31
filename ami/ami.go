@@ -19,6 +19,8 @@ type Profile struct {
 
 // NewProfile generates the AMIProfile of a given sequence in as concurrent
 // a fashion as possible
+// TODO: Current Profile has NaN entries. I suspect in Ik() there is a division
+// by near-zero error
 func NewProfile(seq *dna.Sequence) Profile {
 	combs := GenerateCombinations(minK, maxK, dna.ValidNucs)
 	nks := Nk(*seq, combs)

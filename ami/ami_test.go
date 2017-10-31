@@ -1,6 +1,7 @@
 package ami
 
 import (
+	"fmt"
 	"math"
 	"math/rand"
 	"reflect"
@@ -59,4 +60,53 @@ func TestNewProfileIsCorrect(t *testing.T) {
 		t.Errorf("NewProfile() did not generate the correct "+
 			"known profile in testing. Expected %v, but got %v", expected, profile)
 	}
+}
+
+// Since AMI takes the average mutual information across K values
+// It should not matter whether the combination was A-T or T-A thus
+// the forward profile should match the reverse profile
+func TestAMIHasSymmetry(t *testing.T) {
+	forwardseq := utils.RandSeq(rand.Intn(math.MaxInt16))
+	reverseseq := utils.ReverseSeq(forwardseq)
+	forwardprofile := NewProfile(&forwardseq)
+	reverseprofile := NewProfile(&reverseseq)
+
+	if !checkMatchingLengths(forwardprofile, reverseprofile) {
+		t.Error("Forward and reverse profiles had non-matching lengths.")
+	}
+	if !checkMatchingKs(forwardprofile, reverseprofile) {
+		t.Error("Forward and reverse profiles had non-matching K values.")
+	}
+	if !checkMatchingIks(forwardprofile, reverseprofile) {
+		t.Error("Forward and reverse profiles had non-matching Ik values.")
+	}
+}
+
+func checkMatchingLengths(p1, p2 Profile) bool {
+	return len(p1.entries) == len(p2.entries)
+}
+
+func checkMatchingKs(p1, p2 Profile) bool {
+	for idx, val := range p1.entries {
+		if p2.entries[idx].k != val.k {
+			return false
+		}
+	}
+	return true
+}
+
+func checkMatchingIks(p1, p2 Profile) bool {
+	const threshold float64 = 0.0001
+	for idx, val := range p1.entries {
+		floatik1 := float64(val.ik)
+		floatik2 := float64(p2.entries[idx].ik)
+		if !utils.FloatsApproxEqual(floatik1, floatik2, threshold) {
+			fmt.Printf("Ik values were not within threshold (%[1]v):\n"+
+				"p1[%[2]d]: %[3]v\n"+
+				"p2[%[2]d]: %[4]v\n",
+				threshold, idx, p2.entries[idx].ik, val.ik)
+			return false
+		}
+	}
+	return true
 }
