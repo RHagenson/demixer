@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3355637.svg)](https://doi.org/10.5281/zenodo.3355637)
+
 # demixer
 
 A collection of methods to demix Illumina read data -- each method in its own directory.
