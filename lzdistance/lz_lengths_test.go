@@ -3,7 +3,7 @@ package lzdistance
 import (
 	"testing"
 
-	"bitbucket.org/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/dna"
 )
 
 var LZ78Tests = []struct {

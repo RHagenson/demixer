@@ -1,6 +1,6 @@
 package ami
 
-import "bitbucket.org/rhagenson/demixer/dna"
+import "github.com/rhagenson/demixer/dna"
 
 // Combination is a permuation of k, I, and J values
 // where k is the distance between I and J, while I and J are both valid

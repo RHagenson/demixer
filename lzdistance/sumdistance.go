@@ -3,7 +3,7 @@ package lzdistance
 import (
 	"bytes"
 
-	"bitbucket.org/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/dna"
 )
 
 // SumDistance is method three of computing LZ-based distance between

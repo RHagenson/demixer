@@ -3,7 +3,7 @@ package ami
 import (
 	"strings"
 
-	"bitbucket.org/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/dna"
 )
 
 // NucProbs takes a Sequence and computes the Probability of each Nuc

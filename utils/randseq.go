@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"time"
 
-	"bitbucket.org/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/dna"
 )
 
 // RandSeq is a test utility to produce random Sequences based on ValidNucs

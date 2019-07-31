@@ -5,7 +5,7 @@ import (
 	"math/rand"
 	"testing"
 
-	"bitbucket.org/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/dna"
 )
 
 // TestZ76FactorsHaveSubadditivity checks that the produced factors hold to:

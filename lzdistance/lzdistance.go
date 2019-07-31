@@ -3,7 +3,7 @@ package lzdistance
 import (
 	"bytes"
 
-	"bitbucket.org/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/dna"
 )
 
 // AverageLZDistance is a dangerous method that averages the Distance

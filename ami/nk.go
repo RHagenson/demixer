@@ -1,6 +1,6 @@
 package ami
 
-import "bitbucket.org/rhagenson/demixer/dna"
+import "github.com/rhagenson/demixer/dna"
 
 // NkValue is a wrapper around an underlying usigned integer
 type NkValue uint16

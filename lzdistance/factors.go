@@ -1,6 +1,6 @@
 package lzdistance
 
-import "bitbucket.org/rhagenson/demixer/dna"
+import "github.com/rhagenson/demixer/dna"
 
 // LZ76Factors takes two Sequences and computes the four possible
 // factorizations c(S), c(Q), c(S,Q), and c(Q,S)

@@ -3,7 +3,7 @@ package ami
 import (
 	"math"
 
-	"bitbucket.org/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/dna"
 )
 
 // IkValue is the measure of AMI at a given K value

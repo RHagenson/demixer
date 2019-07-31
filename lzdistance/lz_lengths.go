@@ -4,7 +4,7 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 
-	"bitbucket.org/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/dna"
 )
 
 // LZ78Length implements an LZ78 search and returns complexity length

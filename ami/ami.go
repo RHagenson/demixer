@@ -3,7 +3,7 @@ package ami
 import (
 	"math"
 
-	"bitbucket.org/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/dna"
 )
 
 // Entry is made up of a K and IkValue pair

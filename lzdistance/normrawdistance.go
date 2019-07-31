@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"math"
 
-	"bitbucket.org/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/dna"
 )
 
 // NormRawDistance is method two of computing LZ-based distance between

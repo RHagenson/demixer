@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"math"
 
-	"bitbucket.org/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/dna"
 )
 
 // RawDistance is method one of computing the LZ-based distance between

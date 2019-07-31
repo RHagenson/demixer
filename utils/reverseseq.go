@@ -1,7 +1,7 @@
 package utils
 
 import (
-	"bitbucket.org/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/dna"
 )
 
 // ReverseSeq takes a Sequence and returns its reverse equivalent

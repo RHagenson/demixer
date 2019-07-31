@@ -3,7 +3,7 @@ package ami
 import (
 	"testing"
 
-	"bitbucket.org/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/dna"
 )
 
 // Ensure Combinations can include the same Nuc at both Nuc1 and Nuc2

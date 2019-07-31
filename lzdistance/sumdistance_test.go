@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"testing"
 
-	"bitbucket.org/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/dna"
 )
 
 // TestSumDistanceSymmetry check whether d(S,Q) == d(Q,S)

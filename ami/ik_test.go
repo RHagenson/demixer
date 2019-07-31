@@ -6,8 +6,8 @@ import (
 	"reflect"
 	"testing"
 
-	"bitbucket.org/rhagenson/demixer/dna"
-	"bitbucket.org/rhagenson/demixer/utils"
+	"github.com/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/utils"
 )
 
 func TestIkReturnsForm(t *testing.T) {
