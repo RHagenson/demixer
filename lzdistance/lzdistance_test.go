@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	"github.com/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/utils"
 )
 
 // TestAverageLZDistanceSymmetry check whether d(S,Q) == d(Q,S)
@@ -14,10 +15,10 @@ func TestAverageLZDistanceSymmetry(t *testing.T) {
 	// Generate two sequences at random in parallel
 	seqchan := make(chan dna.Sequence, 2)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 
 	// Gather the sequences
@@ -43,10 +44,10 @@ func TestAverageLZDistanceGreaterThanZero(t *testing.T) {
 	// Generate two sequences at random in parallel
 	seqchan := make(chan dna.Sequence, 2)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 
 	// Gather the sequences
@@ -66,7 +67,7 @@ func TestAverageLZDistanceGreaterThanZero(t *testing.T) {
 
 func TestAverageLZDistanceOfOneSequenceIsZero(t *testing.T) {
 	// Generate one random sequence
-	s := randSeq(rand.Intn(math.MaxInt16))
+	s := utils.RandSeq(rand.Intn(math.MaxInt16))
 
 	// Generate one distance measure
 	dist := AverageLZDistance(s, s)
@@ -82,10 +83,10 @@ func TestAverageNormLZDistanceSymmetry(t *testing.T) {
 	// Generate two sequences at random in parallel
 	seqchan := make(chan dna.Sequence, 2)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 
 	// Gather the sequences
@@ -111,10 +112,10 @@ func TestAverageNormLZDistanceGreaterThanZero(t *testing.T) {
 	// Generate two sequences at random in parallel
 	seqchan := make(chan dna.Sequence, 2)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 
 	// Gather the sequences
@@ -134,7 +135,7 @@ func TestAverageNormLZDistanceGreaterThanZero(t *testing.T) {
 
 func TestAverageNormLZDistanceOfOneSequenceIsZero(t *testing.T) {
 	// Generate one random sequence
-	s := randSeq(rand.Intn(math.MaxInt16))
+	s := utils.RandSeq(rand.Intn(math.MaxInt16))
 
 	// Generate one distance measure
 	dist := AverageNormLZDistance(s, s)
@@ -150,13 +151,13 @@ func TestAverageNormLZDistanceTriangleInequality(t *testing.T) {
 	// Generate three sequences at random in parallel
 	seqchan := make(chan dna.Sequence, 3)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 
 	// Gather the sequences

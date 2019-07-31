@@ -6,6 +6,7 @@ import (
 	"testing"
 
 	"github.com/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/utils"
 )
 
 // TestZ76FactorsHaveSubadditivity checks that the produced factors hold to:
@@ -15,10 +16,10 @@ func TestLZ76FactorsHaveSubadditivity(t *testing.T) {
 	// Generate two sequences at random in parallel
 	seqchan := make(chan dna.Sequence, 2)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 
 	// Gather the sequences
@@ -44,10 +45,10 @@ func TestLZ78FactorsHaveSubadditivity(t *testing.T) {
 	// Generate two sequences at random in parallel
 	seqchan := make(chan dna.Sequence, 2)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 
 	// Gather the sequences

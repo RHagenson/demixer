@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	"github.com/rhagenson/demixer/dna"
+	"github.com/rhagenson/demixer/utils"
 )
 
 // TestRawDistanceSymmetry check whether d(S,Q) == d(Q,S)
@@ -14,10 +15,10 @@ func TestRawDistanceSymmetry(t *testing.T) {
 	// Generate two sequences at random in parallel
 	seqchan := make(chan dna.Sequence, 2)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 
 	// Gather the sequences
@@ -43,10 +44,10 @@ func TestRawDistanceGreaterThanZero(t *testing.T) {
 	// Generate two sequences at random in parallel
 	seqchan := make(chan dna.Sequence, 2)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 	go func(seq chan dna.Sequence) {
-		seq <- randSeq(rand.Intn(math.MaxInt16))
+		seq <- utils.RandSeq(rand.Intn(math.MaxInt16))
 	}(seqchan)
 
 	// Gather the sequences
@@ -70,7 +71,7 @@ func TestRawDistanceGreaterThanZero(t *testing.T) {
 
 func TestRawDistanceOfOneSequenceIsZero(t *testing.T) {
 	// Generate one random sequence
-	s := randSeq(rand.Intn(math.MaxInt16))
+	s := utils.RandSeq(rand.Intn(math.MaxInt16))
 
 	// Generate one distance measure
 	dist := RawDistance(s, s)
